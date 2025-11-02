@@ -1,0 +1,28 @@
+<form (ngSubmit)="CreatepagedataSave()" #myForm="ngForm">
+
+  <input type="email" name="email" [(ngModel)]="Email" placeholder="Email" class="input-dark" required />
+  <div *ngIf="myForm.submitted && myForm.controls['email']?.invalid" class="error">
+    Please enter a valid email.
+  </div>
+
+  <input type="text" name="password" [(ngModel)]="Password" placeholder="Password" class="input-dark" required />
+  <div *ngIf="myForm.submitted && myForm.controls['password']?.invalid" class="error">
+    Please enter a password.
+  </div>
+
+  <select name="SelectGender" [(ngModel)]="SelectGender" class="input-dark" required>
+    <option value="">Select Gender</option>
+    <option *ngFor="let item of dropdownData" [value]="item.ID">{{ item.GENDER }}</option>
+  </select>
+  <div *ngIf="myForm.submitted && myForm.controls['SelectGender']?.invalid" class="error">
+    Please select a gender.
+  </div>
+
+  <input type="date" name="dob" [(ngModel)]="Age" class="input-dark" required />
+  <div *ngIf="myForm.submitted && myForm.controls['dob']?.invalid" class="error">
+    Please enter your date of birth.
+  </div>
+
+  <button type="submit" class="btn-glass">Submit</button>
+
+</form>

@@ -1,0 +1,174 @@
+<div class="create-user-container">
+    <h2>Create New User</h2>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div *ngIf="successmsg" class="success-message">
+            {{ successmsg }}
+        </div>
+
+         <div *ngIf="errmsg" class="err-message">
+            {{ errmsg }}
+        </div>
+
+        <div class="form-group">
+            <label for="name">Full Name <span style="color:red">*</span></label>
+            <input type="text" id="name" name="name" [(ngModel)]="user.name" placeholder="Enter full name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email <span style="color:red">*</span></label>
+            <input type="email" id="email" name="email" [(ngModel)]="user.email" placeholder="Enter email" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Gender">Gender <span style="color:red">*</span></label>
+            <select id="Gender" name="Gender" [(ngModel)]="user.Gender" required>
+                <option value="">-- Select Gender --</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="role">Role <span style="color:red">*</span></label>
+            <select id="role" name="role" [(ngModel)]="user.role" required>
+                <option value="">-- Select Role --</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password <span style="color:red">*</span></label>
+            <input type="password" id="password" name="password" [(ngModel)]="user.password"
+                placeholder="Enter password" required />
+        </div>
+
+
+        <div class="form-group">
+            <label for="attachment">Upload Image</label>
+            <input type="file" id="attachment" accept=".jpg,.jpeg,.png" name="attachment"
+                (change)="onFileSelected($event)" />
+
+            <div *ngIf="fileError" class="error">{{ fileError }}</div>
+        </div>
+
+        <button type="submit" id="CreateUserbtn" [disabled]="userForm.invalid">
+            {{ isEditMode ? 'Update' : 'Save' }}
+        </button>
+
+        <button type="button" class="btn secondary" (click)="btnCancel()">Cancel</button>
+
+    </form>
+</div>
+
+
+
+
+<!-- 
+table 
+USERS
+
+sp
+InsertUser -->
+<!-- 
+
+ALTER PROCEDURE InsertUser
+    @Email VARCHAR(1000) = '',
+    @Password VARCHAR(1000) = '',
+    @Gender VARCHAR(10) = '',
+    @DOB DATETIME = NULL,
+    @optmode VARCHAR(100) = '',
+    @FileName VARCHAR(1000) = '',
+    @ContentType VARCHAR(MAX) = '',
+    @name VARCHAR(1000) = '',
+    @role VARCHAR(100) = '',
+    @Result INT = -1 OUTPUT    
+AS
+BEGIN
+
+    IF (@optmode = 'CreateDataSave')
+    BEGIN
+        IF NOT EXISTS (SELECT 1 FROM Users WHERE Email = @Email)
+        BEGIN
+            INSERT INTO Users (Email, Password, Gender, DOB, EntryDate, FullName)
+            VALUES (@Email, @Password, @Gender, @DOB, GETDATE(), @name);
+
+            SET @Result = 1;
+        END
+        ELSE
+        BEGIN
+            SET @Result = -1;
+        END
+    END
+
+    ELSE IF (@optmode = 'Data_Get')
+    BEGIN
+        IF EXISTS (SELECT * FROM Users WHERE Email = @Email AND Password = @Password)
+        BEGIN
+            SELECT * 
+            FROM Users 
+            WHERE Email = @Email AND Password = @Password;
+            SET @Result = 1;
+        END
+        ELSE
+        BEGIN
+            SET @Result = -1;
+        END
+    END
+
+
+    ELSE IF (@optmode = 'InsideLoginInsertUser')
+    BEGIN
+        IF NOT EXISTS (SELECT 1 FROM Users WHERE Email = @Email)
+        BEGIN
+            INSERT INTO Users (Email, Password, Gender, DOB, EntryDate, FullName, Role)
+            VALUES (@Email, @Password, @Gender, @DOB, GETDATE(), @name, @role)
+
+            INSERT INTO USersFiles (RecordID, FileName, FilePath)
+            VALUES (SCOPE_IDENTITY() ,@FileName, @ContentType)
+
+            SET @Result = 1;
+        END
+        ELSE
+        BEGIN
+            SET @Result = -1;
+        END
+    END
+
+    ELSE IF (@optmode = 'EditProfile_Get')
+    BEGIN
+        IF EXISTS (SELECT * FROM Users WHERE Email = @Email AND Password = @Password)
+        BEGIN
+            SELECT * 
+            FROM Users 
+            WHERE Email = @Email AND Password = @Password;
+            SET @Result = 1;
+        END
+        ELSE
+        BEGIN
+            SET @Result = -1;
+        END
+    END
+
+    ELSE IF(@optmode = 'AssignedDropdown')
+    BEGIN 
+        SELECT DISTINCT ID, FullName
+        FROM Users 
+        WHERE FullName <> ''
+        SET @Result = 1;
+    END
+    
+    ELSE IF(@optmode = 'View_ProfileData')
+    BEGIN 
+        SELECT DISTINCT 
+            A.*, 
+            B.FileName,B.FilePath
+        FROM Users A
+        LEFT JOIN UsersFiles B ON A.ID = B.RecordID
+        WHERE A.Email = @Email AND A.Password = @Password;
+
+        SET @Result = 1;
+    END
+    
+END --> 

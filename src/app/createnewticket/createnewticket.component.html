@@ -1,0 +1,52 @@
+<div class="create-ticket-container">
+    <h2>Create New Ticket</h2>
+    <form #ticketForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="subject">Subject <span style="color: red;">*</span></label>
+            <input type="text" id="subject" name="subject" [(ngModel)]="ticket.subject" placeholder="Enter subject"
+                required />
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category <span style="color: red;">*</span></label>
+            <select id="category" name="category" [(ngModel)]="ticket.category" required>
+                <option value="">Select</option>
+                <option value="technical">Technical</option>
+                <option value="billing">Billing</option>
+                <option value="general">General</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="assignedTo">Assigned To <span style="color: red;">*</span></label>
+            <select id="assignedTo" name="assignedTo" [(ngModel)]="ticket.assignedTo" required>
+                <option value="">Select</option>
+                <option *ngFor="let person of persons" [value]="person.ID">{{ person.FullName }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="priority">Priority <span style="color: red;">*</span></label>
+            <select id="priority" name="priority" [(ngModel)]="ticket.priority" required>
+                <option value="">Select</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description <span style="color: red;">*</span></label>
+            <textarea id="description" name="description" [(ngModel)]="ticket.description"
+                placeholder="Describe the issue" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="attachment">Attachment</label>
+            <input type="file" id="attachment" name="attachment" (change)="onFileSelected($event)" />
+        </div>
+
+        <button type="submit" [disabled]="ticketForm.invalid">Submit Ticket</button>
+    </form>
+</div>

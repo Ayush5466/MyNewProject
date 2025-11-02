@@ -1,0 +1,28 @@
+<div class="profile-wrapper">
+    <div class="profile-banner"></div>
+
+    <div class="profile-box">
+        <img [src]="GetFilePath ? GetFilePath : 'assets/default-avatar.png'" alt="Profile Avatar"
+            class="profile-avatar" />
+
+        <h2 class="profile-name">{{ userName }}</h2>
+        <p class="profile-email">{{ userEmail }}</p>
+
+        <div class="profile-info">
+            <div class="info-item">
+                <span class="label">📅 Joined On</span>
+                <span class="value">{{ joinDate }}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">⭐ Status</span>
+                <span class="value active">Active</span>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <!-- <button class="btn primary" (click)="EditProfile()">Edit Profile</button> -->
+            <button class="btn primary" (click)="EditProfile1(userEmail,userpassword)">Edit Profile</button>
+            <button class="btn secondary" (click)="backafterlogin()">Back</button>
+        </div>
+    </div>
+</div>

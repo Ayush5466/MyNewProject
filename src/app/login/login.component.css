@@ -1,0 +1,199 @@
+.glass-login-wrapper {
+    min-height: 100vh;
+    background: url('/assets/images/bg-glass.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 1rem;
+    background-color: #0c0c0c !important;
+}
+
+.glass-login-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.glass-login-card h2 {
+    font-size: 24px;
+    margin-bottom: 0.5rem;
+}
+
+.glass-login-card p {
+    font-size: 14px;
+    margin-bottom: 1.5rem;
+    color: #ccc;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    position: relative;
+    border: none;
+    border-radius: 10px;
+}
+
+input {
+    width: 94%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+}
+
+select {
+    width: 94%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+}
+
+input::placeholder {
+    color: #ddd;
+}
+
+input:focus {
+    border-color: #00bfff;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.welcome-title-italic {
+    font-size: 2.5rem;
+    font-style: italic;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 10px rgba(0, 229, 255, 4.25);
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.btn-glass {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-glass:hover {
+    opacity: 0.9;
+}
+
+.separator {
+    margin: 1.2rem 0;
+    font-size: 13px;
+    color: #ccc;
+}
+
+.btn-social {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-social:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.footer-link {
+    font-size: 13px;
+    margin-top: 1rem;
+    color: #ccc;
+}
+
+.footer-link a {
+    color: #4facfe;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-form {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    width: 350px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    color: white;
+}
+
+.login-page {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, rgba(58, 110, 180, 0.3) 0%, #0d1117 70%, #0d1117 100%);
+    background-color: #0d1117;
+    background-image:
+        radial-gradient(white 1px, transparent 0),
+        radial-gradient(white 1px, transparent 0);
+    background-size: 100px 100px;
+    background-position: 0 0, 50px 50px;
+}
+
+.error-message {
+    color: #ff6b6b;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+@keyframes fadeIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

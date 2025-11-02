@@ -1,0 +1,115 @@
+<!-- <div class="overlay">
+  <div class="success-popup">
+    <div class="emoji">🎉</div>
+    <h1>Login Successful!</h1>
+    <p>Welcome back. You have successfully logged in.</p>
+    <button (click)="gotoDashboard()">Log out</button>
+  </div>  
+</div> -->
+
+
+
+<div class="dashboard-container">
+  <!-- Navbar -->
+  <header class="navbar">
+    <!-- Mobile Hamburger (Left side) -->
+    <div class="mobile-only">
+      <button class="menu-btn" (click)="toggleMobileMenu()">☰</button>
+    </div>
+
+    <div class="logo"></div>
+    <div class="logo mobile-only">Welcome, {{ UserEmail }} 👋</div>
+
+    <!-- Desktop Nav Buttons (Right side) -->
+    <div class="nav-right desktop-only">
+      <span class="username">Welcome {{ UserEmail }} 👋</span>
+      <button (click)="gotoprofile()" class="profile-btn">Profile</button>
+      <button (click)="gotoDashboard()" class="logout-btn">Logout</button>
+    </div>
+  </header>
+
+
+  <!-- Side Menu for Mobile -->
+  <div class="side-menu" [class.open]="mobileMenuOpen">
+    <button class="close-btn" (click)="toggleMobileMenu()">✖</button>
+
+    <div class="user-info">
+      <span class="welcome-text">Welcome</span><br />
+      <span class="email-text">{{ UserEmail }} 👋</span>
+    </div>
+
+    <div class="date-time">
+      <p>{{ currentDay }}, {{ currentDate }}</p>
+      <p>{{ currentTime }}</p>
+    </div>
+
+    <button (click)="gotoprofile()" class="profile-btn">Profile</button>
+    <button (click)="gotoDashboard()" class="logout-btn">Logout</button>
+  </div>
+
+  <!-- Quick Stats -->
+  <section class="stats-section">
+    <div class="stat-card open">
+      <h3>Open Tickets</h3>
+      <p>3</p>
+    </div>
+    <div class="stat-card progress">
+      <h3>In Progress</h3>
+      <p>2</p>
+    </div>
+    <div class="stat-card resolved">
+      <h3>Resolved</h3>
+      <p>5</p>
+    </div>
+    <div class="stat-card closed">
+      <h3>Closed</h3>
+      <p>8</p>
+    </div>
+  </section>
+
+  <!-- Ticket Table -->
+  <section class="tickets-section">
+    <div class="tickets-header">
+      <h1>My Tickets</h1>
+
+      <div class="create-menu" (click)="toggleMenu()" [class.active]="menuOpen">
+        <span>+ Create</span>
+        <div class="menu-dropdown" [class.show]="menuOpen">
+          <button (click)="CreateUserName()" class="dropdown-btn">+ Create New User</button>
+          <button (click)="CreateTicket()" class="dropdown-btn">+ Create New Ticket</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ticket Table -->
+    <div class="table-wrapper">
+      <table class="ticket-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Last Updated</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#123</td>
+            <td>Login issue</td>
+            <td>High</td>
+            <td>Open</td>
+            <td>2025-08-14</td>
+          </tr>
+          <tr>
+            <td>#124</td>
+            <td>Payment gateway error</td>
+            <td>Medium</td>
+            <td>In Progress</td>
+            <td>2025-08-13</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,86 @@
+<div class="luxury-birthday-container">
+  <div class="gradient-background"></div>
+  <div class="sparkle-overlay"></div>
+
+
+  <div *ngFor="let balloon of balloons" class="luxury-balloon" [style.left.%]="balloon.position"
+    [style.animation-delay.s]="balloon.delay" [style.animation-duration.s]="balloon.duration"
+    [style.backgroundColor]="balloon.color">
+  </div>
+
+  <div *ngFor="let heart of hearts" class="luxury-heart" [style.left.%]="heart.position"
+    [style.animation-delay.s]="heart.delay" [style.animation-duration.s]="heart.duration">
+    ❤️
+  </div>
+
+  <div *ngFor="let sparkle of sparkles" class="sparkle" [style.left.%]="sparkle.position"
+    [style.animation-delay.s]="sparkle.delay" [style.animation-duration.s]="sparkle.duration"
+    [style.fontSize.px]="sparkle.size">
+    ✨
+  </div>
+
+  <div *ngFor="let photo of photos; let i = index" class="photo-frame" [style.left.%]="photo.position"
+    [style.animation-delay.s]="photo.delay" [style.animation-duration.s]="photo.duration"
+    [style.transform]="'rotate(' + photo.rotation + 'deg)'" [style.width.px]="photo.size"
+    [style.height.px]="photo.size">
+    <img [src]="photoGallery[i % photoGallery.length].src" [alt]="'Memory ' + (i + 1)" class="memory-photo">
+    <div class="photo-caption">{{photoGallery[i % photoGallery.length].caption}}</div>
+  </div>
+
+
+  <div class="main-content">
+
+    <div *ngIf="showMessage" class="premium-message">
+      <div class="message-container">
+        <h1 class="main-title">⋆ 🎀 𝓗𝓪𝓹𝓹𝔂 𝟤𝟥𝓻𝓭 𝓑𝓲𝓻𝓽𝓱𝓭𝓪𝔂 𝒫𝒶𝓇𝓊𝓁 🎀 ⋆</h1>
+        <div class="message-text">{{messages[currentMessage]}}</div>
+        <div class="age-badge">23</div>
+      </div>
+    </div>
+
+    <div *ngIf="showCake" class="luxury-cake-section">
+      <div class="cake-container">
+        <div class="cake">🎂</div>
+        <div class="candles">
+          <div class="candle" *ngFor="let candle of [1,2,3]">🕯️</div>
+        </div>
+        <div class="cake-sparkles">✨✨✨</div>
+      </div>
+    </div>
+
+    <div *ngIf="showGallery" class="photo-gallery">
+      <h2 class="gallery-title">Our Beautiful Memories</h2>
+      <div class="gallery-grid">
+        <div *ngFor="let photo of photoGallery" class="gallery-item">
+          <img [src]="photo.src" [alt]="photo.caption" class="gallery-photo">
+          <div class="gallery-caption">{{photo.caption}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="floating-decorations">
+      <div class="decoration" *ngFor="let d of [1,2,3,4,5,6]">🎀</div>
+    </div>
+
+    <!-- Memory Timeline -->
+    <div *ngIf="showMemories" class="memory-timeline">
+      <h2 class="timeline-title">Our Journey Together</h2>
+      <div class="timeline">
+        <div *ngFor="let memory of memories" class="timeline-item" (click)="showMemoryImage(memory)">
+          <div class="timeline-year">{{memory.year}}</div>
+          <div class="timeline-icon">{{memory.icon}}</div>
+          <div class="timeline-event">{{memory.event}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Preview -->
+    <div *ngIf="showTimelineImage" class="image-preview-overlay" (click)="showTimelineImage = false">
+      <div class="image-preview-container">
+        <img [src]="timelineImageUrl" [alt]="timelineImageCaption" class="preview-image">
+
+      </div>
+    </div>
+
+
+  </div>
