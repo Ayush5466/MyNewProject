@@ -169,7 +169,7 @@
   font-size: 4.5rem;
   font-weight: 800;
   background: linear-gradient(45deg, #ff2a6d, #ff8e3c, #ff2a6d);
-  /* -webkit-background-clip: text; */
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0 0 20px 0;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

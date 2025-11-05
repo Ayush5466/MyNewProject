@@ -39,7 +39,8 @@ bootstrapApplication(AppComponent, {
       { path: 'createnewticket', component: CreatenewticketComponent, canActivate: [AuthGuard] },
       { path: 'createuser', component: CreateuserComponent, canActivate: [AuthGuard] },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-      { path: 'birthday', component: BirthdayComponent, canActivate: [AuthGuard] }
+      // { path: 'birthday', component: BirthdayComponent, canActivate: [AuthGuard] }
+      { path: 'birthday', component: BirthdayComponent }
       //,{ path: 'app-sidebar', component: SidebarComponent, canActivate: [AuthGuard] }
     ])
   ]
