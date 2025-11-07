@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { reportUnhandledError } from 'rxjs/internal/util/reportUnhandledError';
 
@@ -12,14 +12,28 @@ import { reportUnhandledError } from 'rxjs/internal/util/reportUnhandledError';
 export class LoginService {
   private apiUrl = environment.apiBaseUrl;
   private apiurlQR = environment.apiBaseUrlQR;
+  private menuData = new BehaviorSubject<any[]>([]);
+
+  menuData$ = this.menuData.asObservable();
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) { }
 
+
   getLoginData(optmode: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/${optmode}`);
+  }
+
+  FetchMenuData(optmode: string): Observable<any> {
+    debugger;
+    return this.http.get(`${this.apiUrl}/${optmode}`);
+  }
+
+  setMenuData(data: any[]) {
+    debugger;
+    this.menuData.next(data);
   }
 
   SaveLoginData(loginModel: any) {

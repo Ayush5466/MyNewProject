@@ -10,6 +10,7 @@ import { Token } from '@angular/compiler';
 import { LoginService } from '../services/login.service';
 import { LoginComponent } from '../login/login.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
+import { LayoutComponent } from '../layout/layout.component';
 import { AuthGuard } from '../auth.guard';
 
 @Injectable({
@@ -70,8 +71,22 @@ export class AfterLoginComponent {
       this.UserEmail = '';
     }
 
+
     this.updateDateTime();
     setInterval(() => this.updateDateTime(), 1000); // update every second
+    this.FetchMenuData();
+  }
+
+  FetchMenuData() {
+    this.LoginService.FetchMenuData('Data_Get?optmode=FetchMenuData').subscribe({
+      next: (res) => {
+        this.result = res;
+        localStorage.setItem('menuData', JSON.stringify(this.result));
+      },
+      error: (err) => {
+        console.error('❌ Error fetching menu data:', err);
+      }
+    });
   }
 
 

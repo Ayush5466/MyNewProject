@@ -9,7 +9,8 @@ import { AuthGuard } from './auth.guard';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SidebarComponent, NgIf],
+  //imports: [RouterOutlet, SidebarComponent, NgIf],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -29,9 +30,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     history.pushState(null, '', window.location.href);
     console.log('Is Logged In:', this.Auth.isLoggedIn);
-    debugger;
-    // alert(this.Auth.isLoggedIn);
-    this.showSidebar = this.Auth.isLoggedIn;
+
+    //this.showSidebar = this.Auth.isLoggedIn;
     window.addEventListener('popstate', () => {
       history.pushState(null, '', window.location.href);
     });

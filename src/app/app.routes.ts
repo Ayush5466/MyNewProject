@@ -6,18 +6,40 @@ import { CreatenewticketComponent } from './createnewticket/createnewticket.comp
 import { CreateuserComponent } from './createuser/createuser.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BirthdayComponent } from './birthday/birthday.component';
+import { LayoutComponent } from './layout/layout.component';
 import { AuthGuard } from './auth.guard';
+
 
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
-    // { path: '', redirectTo: 'birthday', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'create-account', component: CreateAccountComponent },
-    { path: 'createnewticket', component: CreatenewticketComponent, canActivate: [AuthGuard] },
-    { path: 'createuser', component: CreateuserComponent, canActivate: [AuthGuard] },
-    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-    { path: 'birthday', component: BirthdayComponent, canActivate: [AuthGuard] }
+    {
+        path: '',
+        component: LayoutComponent,
+        canActivate: [AuthGuard],
+        children: [
+            { path: 'profile', component: ProfileComponent },
+            { path: 'createuser', component: CreateuserComponent },
+            { path: 'createnewticket', component: CreatenewticketComponent },
+            { path: '', redirectTo: 'profile', pathMatch: 'full' }
+        ]
+    },
+    { path: '**', redirectTo: 'login' }
 ];
+
+
+
+
+//const routes: Routes = [
+//{ path: '', redirectTo: 'birthday', pathMatch: 'full' },
+//{ path: '', redirectTo: 'login', pathMatch: 'full' },
+//{ path: '', redirectTo: 'birthday', pathMatch: 'full' },
+//{ path: 'login', component: LoginComponent },
+//{ path: 'create-account', component: CreateAccountComponent },
+// { path: 'createnewticket', component: CreatenewticketComponent, canActivate: [AuthGuard] },
+// { path: 'createuser', component: CreateuserComponent, canActivate: [AuthGuard] },
+// { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
 // const routes: Routes = [
 //     { path: '', redirectTo: 'login', pathMatch: 'full' },

@@ -1,1 +1,57 @@
-<p>layout works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<div class="app-container">
+  <!-- Mobile top bar -->
+  <header class="mobile-topbar">
+    <button class="menu-toggle" (click)="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <h2>Dashboard</h2>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.active]="isMenuOpen">
+    <div class="sidebar-header">
+      <h2>Dashboard</h2>
+    </div>
+
+    <ul class="menu">
+      <li><a routerLink="/after-login" routerLinkActive="active"><i class="fa-solid fa-user-plus"></i> After Login</a>
+      </li>
+      <li><a routerLink="/createuser" routerLinkActive="active"><i class="fa-solid fa-user-plus"></i> Create User</a>
+      </li>
+      <li><a routerLink="/createnewticket" routerLinkActive="active"><i class="fa-solid fa-ticket"></i> Create
+          Ticket</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content" (click)="closeMenu()">
+    <header class="topbar">
+      <button (click)="gotoprofile()" class="profile-btn">Profile</button>
+      <button (click)="gotoDashboard()" class="logout-btn">Logout</button>
+    </header>
+    <section class="page-content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>
+
+
+<!-- 
+<div class="app-container">
+  <aside class="sidebar">
+    <h3>Dashboard Menu</h3>
+    <ul>
+      <li *ngFor="let menu of result">
+        <a [routerLink]="menu.route" routerLinkActive="active">
+          {{ menu.title }}
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div> -->
