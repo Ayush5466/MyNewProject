@@ -22,6 +22,19 @@ export class LayoutComponent {
   UserEmail: string | null = '';
   userRole: string | null = '';
 
+  currentDate: string = '';
+  currentTime: string = '';
+  currentDay: string = '';
+
+
+  updateDateTime() {
+    const now = new Date();
+
+    this.currentDay = now.toLocaleDateString('en-US', { weekday: 'long' });
+    this.currentDate = now.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+    this.currentTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  }
+
   constructor(
     private LoginService: LoginService,
     private router: Router,
@@ -47,5 +60,30 @@ export class LayoutComponent {
   gotoprofile() {
     this.router.navigate(['/profile']);
   }
+
+  mobileMenuOpen = false;
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  ngOnInit(): void {
+    const GetEmail = localStorage.getItem('userEmail');
+    const Getpassword = localStorage.getItem('userpassword');
+    debugger;
+    console.log('Is Logged In AfterLogin:', this.Auth.isLoggedIn);
+
+    if (GetEmail) {
+      this.UserEmail = GetEmail.split('@')[0];
+      this.userRole = localStorage.getItem('userEmail');
+    } else {
+      this.UserEmail = '';
+    }
+
+    this.updateDateTime();
+    setInterval(() => this.updateDateTime(), 1000); // update every second
+
+  }
+
 
 }

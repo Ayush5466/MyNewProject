@@ -25,33 +25,45 @@
     </ul>
   </aside>
 
-  <!-- Main Content -->
+
   <main class="content" (click)="closeMenu()">
-    <header class="topbar">
+
+    <header class="navbar">
+      <div class="mobile-only">
+        <button class="menu-btn" (click)="toggleMobileMenu()">☰</button>
+      </div>
+
+      <div class="logo"></div>
+      <div class="logo mobile-only">Welcome, {{ UserEmail }} 👋</div>
+      
+      <div class="nav-right desktop-only">
+        <span class="username">Welcome {{ UserEmail }} 👋</span>
+        <button (click)="gotoprofile()" class="profile-btn">Profile</button>
+        <button (click)="gotoDashboard()" class="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <div class="side-menu" [class.open]="mobileMenuOpen">
+      <button class="close-btn" (click)="toggleMobileMenu()">✖</button>
+
+      <div class="user-info">
+        <span class="welcome-text">Welcome</span><br />
+        <span class="email-text">{{ UserEmail }} 👋</span>
+      </div>
+
+      <div class="date-time">
+        <p>{{ currentDay }}, {{ currentDate }}</p>
+        <p>{{ currentTime }}</p>
+      </div>
+
       <button (click)="gotoprofile()" class="profile-btn">Profile</button>
       <button (click)="gotoDashboard()" class="logout-btn">Logout</button>
-    </header>
+    </div>
+
     <section class="page-content">
       <router-outlet></router-outlet>
     </section>
+    
   </main>
 </div>
 
-
-<!-- 
-<div class="app-container">
-  <aside class="sidebar">
-    <h3>Dashboard Menu</h3>
-    <ul>
-      <li *ngFor="let menu of result">
-        <a [routerLink]="menu.route" routerLinkActive="active">
-          {{ menu.title }}
-        </a>
-      </li>
-    </ul>
-  </aside>
-
-  <main class="content">
-    <router-outlet></router-outlet>
-  </main>
-</div> -->

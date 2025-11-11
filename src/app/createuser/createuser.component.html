@@ -6,7 +6,7 @@
             {{ successmsg }}
         </div>
 
-         <div *ngIf="errmsg" class="err-message">
+        <div *ngIf="errmsg" class="err-message">
             {{ errmsg }}
         </div>
 
@@ -72,6 +72,21 @@ USERS
 sp
 InsertUser -->
 <!-- 
+
+create table AsideMenu(
+    ID BIGINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    Name NVARCHAR(500) NULL,
+    EntryDate DATETIME NULL,
+    C1 nvarchar(500)NULL,
+    C2 nvarchar(500)NULL
+)
+    alter table AsideMenu add PermissionWise nvarchar(500)null
+    https://somee.com/doka/DOU/MSSQL/MsSqlDatabaseConsole/4945260?handler=Query&h1h2h3=336a040a4e8524b5b2e8a4867ecf234d
+
+INSERT INTO AsideMenu(Name,EntryDate,c1,c2,PermissionWise)
+VALUES('after-login',getdate(),null,null,'User'),
+('createnewticket',getdate(),null,null,'Admin'),
+('createuser',getdate(),null,null,'Admin')
 
 ALTER PROCEDURE InsertUser
     @Email VARCHAR(1000) = '',
@@ -170,5 +185,7 @@ BEGIN
 
         SET @Result = 1;
     END
+
     
-END --> 
+    
+END -->

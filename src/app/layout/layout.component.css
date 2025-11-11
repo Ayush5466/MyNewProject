@@ -7,6 +7,81 @@
   overflow: hidden;
 }
 
+.navbar {
+  background: #2b3e50;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  flex-wrap: wrap;
+}
+
+.dashboard-container {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  min-height: 100vh;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-btn {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 220px;
+  height: 100%;
+  background: #2b3e50;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  transition: left 0.3s ease;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.side-menu button,
+.close-btn {
+  margin: 10px 0;
+}
+
+.side-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 150;
+}
+
+.side-overlay.show {
+  display: block;
+}
+
+
 
 .logout-btn,
 .profile-btn,
@@ -152,5 +227,54 @@
   .content {
     flex: 1;
     padding-top: 60px;
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+
+  .stats-section,
+  .stat-card {
+    flex-wrap: wrap;
+    flex: 1 1 100%;
+  }
+
+  .tickets-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 2%;
+  }
+
+  .navbar {
+    flex-direction: row;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .tickets-header h1 {
+    flex: 1;
+  }
+
+  .create-menu {
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none;
+  }
+
+  .nav-right {
+    display: flex;
   }
 }

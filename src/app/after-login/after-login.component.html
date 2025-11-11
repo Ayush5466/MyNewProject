@@ -7,30 +7,27 @@
   </div>  
 </div> -->
 
-  
+
 
 <div class="dashboard-container">
-  <!-- Navbar --> 
-  <header class="navbar">
-    <!-- Mobile Hamburger (Left side) -->
+  <!-- Navbar -->
+  <!-- <header class="navbar">
     <div class="mobile-only">
       <button class="menu-btn" (click)="toggleMobileMenu()">☰</button>
     </div>
 
     <div class="logo"></div>
     <div class="logo mobile-only">Welcome, {{ UserEmail }} 👋</div>
-
-    <!-- Desktop Nav Buttons (Right side) -->
     <div class="nav-right desktop-only">
       <span class="username">Welcome {{ UserEmail }} 👋</span>
       <button (click)="gotoprofile()" class="profile-btn">Profile</button>
       <button (click)="gotoDashboard()" class="logout-btn">Logout</button>
     </div>
-  </header>
+  </header> -->
 
 
   <!-- Side Menu for Mobile -->
-  <div class="side-menu" [class.open]="mobileMenuOpen">
+  <!-- <div class="side-menu" [class.open]="mobileMenuOpen">
     <button class="close-btn" (click)="toggleMobileMenu()">✖</button>
 
     <div class="user-info">
@@ -45,7 +42,7 @@
 
     <button (click)="gotoprofile()" class="profile-btn">Profile</button>
     <button (click)="gotoDashboard()" class="logout-btn">Logout</button>
-  </div>
+  </div> -->
 
   <!-- Quick Stats -->
   <section class="stats-section">
@@ -72,13 +69,13 @@
     <div class="tickets-header">
       <h1>My Tickets</h1>
 
-      <div class="create-menu" (click)="toggleMenu()" [class.active]="menuOpen">
+      <!-- <div class="create-menu" (click)="toggleMenu()" [class.active]="menuOpen">
         <span>+ Create</span>
         <div class="menu-dropdown" [class.show]="menuOpen">
           <button (click)="CreateUserName()" class="dropdown-btn">+ Create New User</button>
           <button (click)="CreateTicket()" class="dropdown-btn">+ Create New Ticket</button>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!-- Ticket Table -->
