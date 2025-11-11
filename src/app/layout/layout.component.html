@@ -35,7 +35,7 @@
 
       <div class="logo"></div>
       <div class="logo mobile-only">Welcome, {{ UserEmail }} 👋</div>
-      
+
       <div class="nav-right desktop-only">
         <span class="username">Welcome {{ UserEmail }} 👋</span>
         <button (click)="gotoprofile()" class="profile-btn">Profile</button>
@@ -60,10 +60,9 @@
       <button (click)="gotoDashboard()" class="logout-btn">Logout</button>
     </div>
 
-    <section class="page-content">
+    <div class="main-content">
       <router-outlet></router-outlet>
-    </section>
-    
+    </div>
+
   </main>
 </div>
-
