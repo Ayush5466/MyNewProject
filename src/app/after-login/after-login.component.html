@@ -1,13 +1,3 @@
-<!-- <div class="overlay">
-  <div class="success-popupa">
-    <div class="emoji">🎉</div>
-    <h1>Login Successful!</h1>
-    <p>Welcome back. You have successfully logged in.</p>
-    <button (click)="gotoDashboard()">Log out</button>
-  </div>  
-</div> -->
-
-
 
 <div class="dashboard-container">
   <!-- Navbar -->
@@ -46,7 +36,7 @@
 
   <!-- Quick Stats -->
   <section class="stats-section">
-    <div class="stat-card open">
+    <div class="stat-card open" (click)="goToOpenTickets()">
       <h3>Open Tickets</h3>
       <p>3</p>
     </div>

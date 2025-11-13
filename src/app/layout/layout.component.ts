@@ -59,6 +59,7 @@ export class LayoutComponent {
   }
 
   gotoprofile() {
+    this.closeMenu();
     this.router.navigate(['/profile']);
   }
 
@@ -69,11 +70,9 @@ export class LayoutComponent {
   }
 
   ngOnInit(): void {
-
     this.LoginService.MenuDataFetch().subscribe({
       next: (res: any) => {
         this.menuItems = JSON.parse(res.data);
-        console.log(this.menuItems);
       },
       error: (err) => {
         this.errmsg = "Error fetching dropdown data";

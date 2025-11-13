@@ -1,0 +1,73 @@
+.open-ticket-page {
+    background-color: #f5f6fa;
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Title */
+.open-ticket-page h2 {
+    color: #d32f2f;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Image styling */
+.open-ticket-page img {
+    width: 250px;
+    max-width: 80%;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Table styling */
+.open-ticket-page table {
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.open-ticket-page th {
+    background-color: #222;
+    color: white;
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.open-ticket-page td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+}
+
+.open-ticket-page tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .open-ticket-page table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .open-ticket-page h2 {
+        font-size: 22px;
+    }
+
+    .open-ticket-page img {
+        width: 180px;
+    }
+}

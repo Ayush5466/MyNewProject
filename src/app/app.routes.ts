@@ -7,6 +7,7 @@ import { CreateuserComponent } from './createuser/createuser.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BirthdayComponent } from './birthday/birthday.component';
 import { LayoutComponent } from './layout/layout.component';
+import { OpenTicketsComponent } from './open-tickets/open-tickets.component';
 import { AuthGuard } from './auth.guard';
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
             { path: 'profile', component: ProfileComponent },
             { path: 'createuser', component: CreateuserComponent },
             { path: 'createnewticket', component: CreatenewticketComponent },
+            { path: 'open-tickets', component: OpenTicketsComponent },
             { path: '', redirectTo: 'profile', pathMatch: 'full' }
         ]
     },

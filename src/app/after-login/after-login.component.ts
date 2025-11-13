@@ -143,6 +143,10 @@ export class AfterLoginComponent {
     this.router.navigate(['/profile']);
   }
 
+  goToOpenTickets() {
+    this.router.navigate(['/open-tickets']);
+  }
+
 
 }
 

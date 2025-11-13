@@ -11,13 +11,31 @@
   <!-- Sidebar -->
   <aside class="sidebar" [class.active]="isMenuOpen">
     <div class="sidebar-header">
-      <h2>Dashboard</h2>
+      <img class="logo-square" src="https://angular.io/assets/images/logos/angular/angular.png" alt="Angular Logo">
     </div>
+
+    <!-- <ul class="menu">
+      <li>
+        <a routerLink="/after-login" routerLinkActive="active" (click)="closeMenu()">
+          <i class="fa-solid fa-user-plus"></i> After Login
+        </a>
+      </li>
+      <li>
+        <a routerLink="/createuser" routerLinkActive="active" (click)="closeMenu()">
+          <i class="fa-solid fa-user-plus"></i> Create User
+        </a>
+      </li>
+      <li>
+        <a routerLink="/createnewticket" routerLinkActive="active" (click)="closeMenu()">
+          <i class="fa-solid fa-ticket"></i> Create Ticket
+        </a>
+      </li>
+    </ul> -->
 
     <ul class="menu">
       <li *ngFor="let item of menuItems">
         <a [routerLink]="['/', item.Name]" routerLinkActive="active" (click)="closeMenu()">
-          <i [class]="item.LogoName"></i> {{ item.LableName }}
+          <i [class]="item.Logo"></i> {{ item.LableName }}
         </a>
       </li>
     </ul>

@@ -13,6 +13,7 @@ import { ProfileComponent } from './app/profile/profile.component';
 import { BirthdayComponent } from './app/birthday/birthday.component';
 import { SidebarComponent } from './app/components/sidebar/sidebar.component';
 import { LayoutComponent } from './app/layout/layout.component';
+import { OpenTicketsComponent } from './app/open-tickets/open-tickets.component';
 import { AuthGuard } from './app/auth.guard';
 
 // bootstrapApplication(AppComponent, {
@@ -67,6 +68,7 @@ bootstrapApplication(AppComponent, {
           { path: 'qr', component: QrComponent },
           { path: 'after-login', component: AfterLoginComponent },
           { path: 'birthday', component: BirthdayComponent },
+          { path: 'open-tickets', component: OpenTicketsComponent },
           { path: '', redirectTo: 'profile', pathMatch: 'full' }
         ]
       },
