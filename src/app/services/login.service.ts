@@ -146,4 +146,13 @@ export class LoginService {
     );
   }
 
+  //For Aside Menu Data Fetch
+
+  MenuDataFetch(): Observable<any> {
+    let a = 'MenuDataFetch';
+    return this.http.get<any>(`${this.apiUrl}/MenuDataFetch?OptMode=${a}`);
+  }
+
+  //For Aside Menu Data Fetch
+
 }

@@ -6,7 +6,6 @@
     <button class="menu-toggle" (click)="toggleMenu()">
       <i class="fa-solid fa-bars"></i>
     </button>
-    <h2>Dashboard</h2>
   </header>
 
   <!-- Sidebar -->
@@ -16,49 +15,48 @@
     </div>
 
     <ul class="menu">
-      <li><a routerLink="/after-login" routerLinkActive="active"><i class="fa-solid fa-user-plus"></i> After Login</a>
+      <li *ngFor="let item of menuItems">
+        <a [routerLink]="['/', item.Name]" routerLinkActive="active" (click)="closeMenu()">
+          <i [class]="item.LogoName"></i> {{ item.LableName }}
+        </a>
       </li>
-      <li><a routerLink="/createuser" routerLinkActive="active"><i class="fa-solid fa-user-plus"></i> Create User</a>
-      </li>
-      <li><a routerLink="/createnewticket" routerLinkActive="active"><i class="fa-solid fa-ticket"></i> Create
-          Ticket</a></li>
     </ul>
+
+    <hr class="mobile-divider" />
+
+    <div class="nav-right mobile-only">
+      <div class="user-info">
+        <span class="username">{{ UserEmail }} 👋</span>
+      </div>
+      <div class="actions">
+        <button (click)="gotoprofile()" class="profile-btn">
+          <i class="fa-solid fa-user"></i>
+        </button>
+        <button (click)="gotoDashboard()" class="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+    </div>
   </aside>
+
 
 
   <main class="content" (click)="closeMenu()">
 
     <header class="navbar">
-      <div class="mobile-only">
-        <button class="menu-btn" (click)="toggleMobileMenu()">☰</button>
-      </div>
 
       <div class="logo"></div>
-      <div class="logo mobile-only">Welcome, {{ UserEmail }} 👋</div>
 
       <div class="nav-right desktop-only">
         <span class="username">Welcome {{ UserEmail }} 👋</span>
-        <button (click)="gotoprofile()" class="profile-btn">Profile</button>
-        <button (click)="gotoDashboard()" class="logout-btn">Logout</button>
+        <button (click)="gotoprofile()" class="profile-btn">
+          <i class="fa-solid fa-user"></i>
+        </button>
+        <button (click)="gotoDashboard()" class="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
       </div>
     </header>
-
-    <div class="side-menu" [class.open]="mobileMenuOpen">
-      <button class="close-btn" (click)="toggleMobileMenu()">✖</button>
-
-      <div class="user-info">
-        <span class="welcome-text">Welcome</span><br />
-        <span class="email-text">{{ UserEmail }} 👋</span>
-      </div>
-
-      <div class="date-time">
-        <p>{{ currentDay }}, {{ currentDate }}</p>
-        <p>{{ currentTime }}</p>
-      </div>
-
-      <button (click)="gotoprofile()" class="profile-btn">Profile</button>
-      <button (click)="gotoDashboard()" class="logout-btn">Logout</button>
-    </div>
 
     <div class="main-content">
       <router-outlet></router-outlet>

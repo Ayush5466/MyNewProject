@@ -25,7 +25,7 @@ export class LayoutComponent {
   currentDate: string = '';
   currentTime: string = '';
   currentDay: string = '';
-
+  errmsg: string = '';
 
   updateDateTime() {
     const now = new Date();
@@ -41,6 +41,7 @@ export class LayoutComponent {
     private Auth: AuthGuard) {
   }
   isMenuOpen = false;
+  menuItems: any[] = [];
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -68,6 +69,18 @@ export class LayoutComponent {
   }
 
   ngOnInit(): void {
+
+    this.LoginService.MenuDataFetch().subscribe({
+      next: (res: any) => {
+        this.menuItems = JSON.parse(res.data);
+        console.log(this.menuItems);
+      },
+      error: (err) => {
+        this.errmsg = "Error fetching dropdown data";
+        console.error(err);
+      }
+    });
+
     const GetEmail = localStorage.getItem('userEmail');
     const Getpassword = localStorage.getItem('userpassword');
     debugger;
@@ -81,9 +94,8 @@ export class LayoutComponent {
     }
 
     this.updateDateTime();
-    setInterval(() => this.updateDateTime(), 1000); // update every second
+    setInterval(() => this.updateDateTime(), 1000);
 
   }
-
 
 }

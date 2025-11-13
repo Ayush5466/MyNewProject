@@ -13,7 +13,8 @@
   left: 16%;
   right: 0;
   height: 60px;
-  background: #2b3e50;
+  /* background: #2b3e50; */
+  background: black;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -29,7 +30,7 @@
   left: 0;
   height: 100vh;
   width: 202px;
-  background: linear-gradient(180deg, #1f2937, #111827);
+  background: black;
   color: white;
   padding: 20px;
   display: flex;
@@ -216,6 +217,8 @@
   background: #111827;
   color: white;
   padding: 15px 20px;
+  top: 0;
+  left: 0;
 }
 
 .menu-toggle {
@@ -233,12 +236,17 @@
   }
 
   .mobile-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
+    z-index: 1000;
   }
 
   .sidebar {
     position: fixed;
-    top: 60px;
+    top: 57px;
     left: 0;
     height: calc(100vh - 60px);
     transform: translateX(-100%);
@@ -297,7 +305,7 @@
 @media (max-width: 768px) {
   .navbar {
     left: 0;
-    /* full width on mobile */
+    display: none;
     padding: 0 15px;
   }
 
@@ -331,4 +339,61 @@
   .mobile-only {
     display: none;
   }
+}
+
+/* Default: hide on desktop */
+.mobile-only {
+  display: none;
+}
+
+/* Show only on mobile screens */
+@media (max-width: 768px) {
+
+  .mobile-divider {
+    display: block;
+    border: none;
+    border-top: 1px solid #444;
+    bottom: 400px;
+  }
+
+  .mobile-only {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    bottom: 200px;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 12px 0;
+    z-index: 999;
+  }
+
+  .user-info {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .profile-btn {
+    background-color: #3b82f6;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: none;
+  }
+
+  .logout-btn {
+    background-color: #ef4444;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: none;
+  }
+
 }
